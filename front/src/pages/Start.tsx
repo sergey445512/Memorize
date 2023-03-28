@@ -37,13 +37,13 @@ const Start = () => {
     );
   }
 
-  if (!store.user.isActivated) {
-    return (
-      <Typography component="h4" variant="h4" className={styles.authMessage}>
-        {` Активируйте почту ${store.user.email}.`}
-      </Typography>
-    );
-  }
+  //   if (!store.user.isActivated) {
+  //     return (
+  //       <Typography component="h4" variant="h4" className={styles.authMessage}>
+  //         {` Активируйте почту ${store.user.email}.`}
+  //       </Typography>
+  //     );
+  //   }
 
   return (
     <div className={styles.cardsPage}>

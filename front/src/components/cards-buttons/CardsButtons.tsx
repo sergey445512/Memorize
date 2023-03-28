@@ -27,9 +27,9 @@ const CardsButtons: FC<ICardsButtons> = ({
     userId: "",
   });
 
-  if (!store.isActivated) {
-    return <></>;
-  }
+  //   if (!store.isActivated) {
+  //     return <></>;
+  //   }
 
   return (
     <div className={styles.buttons}>

@@ -3,7 +3,6 @@ import { makeAutoObservable } from "mobx";
 import { API_URL } from "../http";
 import { IAuthData } from "../models/IAuthData";
 import ICard from "../models/ICard";
-
 import { IUser } from "../models/IUser";
 import AuthService from "../services/AuthService";
 import CardService from "../services/CardService";

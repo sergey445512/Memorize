@@ -1,6 +1,6 @@
 import { TextField, Button, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
-import { FC, memo, ReactNode, useContext, useEffect, useState } from "react";
+import { FC, ReactNode, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../..";
 import styles from "./Form.module.scss";
@@ -24,23 +24,21 @@ const Form: FC<IFormProps> = ({ title, buttonText, type }: IFormProps) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "sergey4451511121@mail.ru",
-      password: "113223",
+      email: "",
+      password: "",
     },
     mode: "onBlur",
   });
   const { store } = useContext(Context);
-  const [activateMessage, setActivateMessage] = useState<boolean>(false);
-  const [userEmail, setUserEmail] = useState<string>("");
+  //   const [activateMessage, setActivateMessage] = useState<boolean>(false);
+  //   const [userEmail, setUserEmail] = useState<string>("");
 
   useEffect(() => {
     store.setAuthError("");
   }, [store]);
 
   if (store.isAuth) {
-    if (type === "login") {
-      return <Navigate to="/" />;
-    }
+    return <Navigate to="/" />;
   }
 
   const submit = async ({ email, password }: IArg) => {
@@ -48,20 +46,19 @@ const Form: FC<IFormProps> = ({ title, buttonText, type }: IFormProps) => {
       await store.login(email, password);
 
       if (!store.authError) {
-        setActivateMessage(true);
+        // setActivateMessage(true);
         store.setAuthError("");
       }
     }
 
     if (type === "registration") {
       const userEmail: unknown = await store.registration(email, password);
-      console.log(userEmail);
-      if (typeof userEmail === "string") {
-        setUserEmail(userEmail);
-      }
+      //   if (typeof userEmail === "string") {
+      //     setUserEmail(userEmail);
+      //   }
 
       if (!store.authError) {
-        setActivateMessage(true);
+        // setActivateMessage(true);
         store.setAuthError("");
       }
     }
@@ -95,12 +92,12 @@ const Form: FC<IFormProps> = ({ title, buttonText, type }: IFormProps) => {
       <Button variant="contained" sx={{ padding: "10px" }} type="submit">
         {buttonText}
       </Button>
-      {activateMessage && type === "registration" && (
+      {/* {activateMessage && type === "registration" && (
         <p>
           {`На почту ${userEmail} было отправлено сообщение для подтверждения
           аккаунта`}
         </p>
-      )}
+      )} */}
 
       <div className={styles.links}>
         {type === "registration" && (
